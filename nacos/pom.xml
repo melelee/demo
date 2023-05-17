@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>nacos-config</module>
+        <module>nacos-discovery</module>
     </modules>
 
     <properties>
