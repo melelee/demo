@@ -5,6 +5,7 @@ spring:
     name: gateway
   cloud:
     gateway:
+#      基于配置文件的路由
       routes:
         - id: baidu
           filters:
@@ -18,7 +19,7 @@ spring:
             - Path=/qq
           filters:
             - StripPrefix=1
-#      基于注册中心的动态路由获取
+#      基于注册中心的动态路由获取，会自动将注册中心中的服务创建路由
       discovery:
         locator:
           enabled: true
