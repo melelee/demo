@@ -18,6 +18,7 @@ spring:
             - Path=/qq
           filters:
             - StripPrefix=1
+#      基于注册中心的动态路由获取
       discovery:
         locator:
           enabled: true
