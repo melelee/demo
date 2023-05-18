@@ -1,0 +1,18 @@
+server:
+  port: 8000
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: baidu
+          filters:
+            - StripPrefix=1
+          uri: https://www.baidu.cn
+          predicates:
+            - Path=/baidu
+        - id: qq
+          uri: https://www.qq.com
+          predicates:
+            - Path=/qq
+          filters:
+#            - StripPrefix=1
