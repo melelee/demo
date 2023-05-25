@@ -13,6 +13,7 @@
         <module>gateway</module>
         <module>feign</module>
         <module>security</module>
+        <module>basic</module>
     </modules>
 
 </project>
