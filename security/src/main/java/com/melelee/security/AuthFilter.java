@@ -1,9 +1,11 @@
 package com.melelee.security;
 
+import com.auth0.jwt.JWT;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -13,7 +15,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Objects;
 
+import static com.melelee.security.DemoController.REDIS;
+
+/**
+ * @author menglili
+ */
 @Component
 public class AuthFilter extends OncePerRequestFilter {
     @Override
@@ -24,14 +32,17 @@ public class AuthFilter extends OncePerRequestFilter {
             return;
         }
 
-        String username = DemoController.MAP.get(token);
+        //todo 生成时用了密码，解密时不用，安全吗？
+        String username = JWT.decode(token).getClaim("username").asString();
         if (!StringUtils.hasText(username)) {
             throw new RuntimeException("认证失败");
         }
-
+        User user = REDIS.get(username);
+        if (Objects.isNull(user)) {
+            throw new RuntimeException("认证失败");
+        }
         //todo 必须用三个参数的构造器
-        //todo 只传入一个username?
-        Authentication authentication = new UsernamePasswordAuthenticationToken(username, null, null);
+        Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, null);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         filterChain.doFilter(httpServletRequest, httpServletResponse);
     }

@@ -1,15 +1,19 @@
 package com.melelee.security;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Date;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
@@ -24,12 +28,15 @@ public class DemoController {
     @Autowired
     AuthenticationManager authenticationManager;
 
-    public static final Map<String, String> MAP = new ConcurrentHashMap<>();
+    //可以用redis的超时机制
+    public static final Map<String, User> REDIS = new ConcurrentHashMap<>();
 
     @PostMapping("/demo/login")
-    public String get(@RequestBody Map<String, String> map) {
+    public String login(@RequestBody Map<String, String> map) {
 
-        Authentication request = new UsernamePasswordAuthenticationToken(map.get("username"), map.get("password"));
+        String username = map.get("username");
+        String password = map.get("password");
+        Authentication request = new UsernamePasswordAuthenticationToken(username, password);
         Authentication result = authenticationManager.authenticate(request);
         if (result == null) {
             return "fail";
@@ -37,9 +44,18 @@ public class DemoController {
         Object principal = result.getPrincipal();
         User user = (User) principal;
 
-        String token = UUID.randomUUID().toString();
+        REDIS.put(user.getUsername(), user);
 
-        MAP.put(token, user.getUsername());
-        return token;
+        return JWT.create().withClaim("username", username).withExpiresAt(new Date(System.currentTimeMillis() + 60 * 60 * 1000)).sign(Algorithm.HMAC256(password));
+    }
+
+    @PostMapping("/demo/logout")
+    public String logout() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) authentication.getPrincipal();
+
+        String username = user.getUsername();
+        REDIS.remove(username);
+        return "success";
     }
 }
