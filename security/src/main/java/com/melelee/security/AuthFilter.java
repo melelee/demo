@@ -37,6 +37,7 @@ public class AuthFilter extends OncePerRequestFilter {
         if (!StringUtils.hasText(username)) {
             throw new RuntimeException("认证失败");
         }
+        //todo 只要能解析出username就算登录成功？拿历史的已经登出同样可以，此处有问题：如果用户的确登录了，但此时用历史的已经登出的token同样可以认证成功
         User user = REDIS.get(username);
         if (Objects.isNull(user)) {
             throw new RuntimeException("认证失败");
