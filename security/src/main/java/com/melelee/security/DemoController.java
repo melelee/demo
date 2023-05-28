@@ -21,7 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @RestController
 public class DemoController {
     @GetMapping("/get")
-    @PreAuthorize("hasAnyAuthority('admin','super')")
+    @PreAuthorize("hasAnyAuthority('admin','super','sys:dept:list')")
     public String get() {
         return "get";
     }

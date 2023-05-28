@@ -36,6 +36,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     AuthFilter authFilter;
 
+    @Autowired
+    SecurityExceptionHandler securityExceptionHandler;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf()
@@ -49,5 +52,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()
                 .authenticated();
         http.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
+        http.exceptionHandling().accessDeniedHandler(securityExceptionHandler).authenticationEntryPoint(securityExceptionHandler);
     }
 }

@@ -15,7 +15,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
-        return new User(s, "$2a$10$g7ZPTC.LJX3es6159aFFtudvTV9m02cdR7.iG/EuQrVIV5Mkr0O5W", List.of(new SimpleGrantedAuthority("super")));
+        //从数据库中查出用户及菜单权限
+        return new User(s, "$2a$10$g7ZPTC.LJX3es6159aFFtudvTV9m02cdR7.iG/EuQrVIV5Mkr0O5W", List.of(new SimpleGrantedAuthority("sys:dept:list")));
     }
 
     public static void main(String[] args) {
