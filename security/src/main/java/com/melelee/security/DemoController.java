@@ -3,6 +3,7 @@ package com.melelee.security;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -15,12 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 import java.util.Map;
-import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 @RestController
 public class DemoController {
     @GetMapping("/get")
+    @PreAuthorize("hasAnyAuthority('admin','super')")
     public String get() {
         return "get";
     }
