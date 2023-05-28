@@ -21,7 +21,10 @@ import java.util.concurrent.ConcurrentHashMap;
 @RestController
 public class DemoController {
     @GetMapping("/get")
-    @PreAuthorize("hasAnyAuthority('admin','super','sys:dept:list')")
+//    @PreAuthorize("hasAuthority('sys:dept:list')")
+//    @PreAuthorize("hasAnyAuthority('admin','super','sys:dept:list')")
+    //spel表达是调用自定义的权限校验规则
+    @PreAuthorize("@spel.hasAuthority('sys:dept:list1')")
     public String get() {
         return "get";
     }
