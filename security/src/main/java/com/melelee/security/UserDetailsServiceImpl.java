@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Collections;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -16,7 +16,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
         //从数据库中查出用户及菜单权限
-        return new User(s, "$2a$10$g7ZPTC.LJX3es6159aFFtudvTV9m02cdR7.iG/EuQrVIV5Mkr0O5W", List.of(new SimpleGrantedAuthority("sys:dept:list")));
+        return new User(s, "$2a$10$g7ZPTC.LJX3es6159aFFtudvTV9m02cdR7.iG/EuQrVIV5Mkr0O5W", Collections.singletonList(new SimpleGrantedAuthority("sys:dept:list")));
     }
 
     public static void main(String[] args) {
