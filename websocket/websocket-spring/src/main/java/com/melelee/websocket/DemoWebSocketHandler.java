@@ -9,6 +9,8 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import java.util.Map;
+
 public class DemoWebSocketHandler extends TextWebSocketHandler {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
@@ -20,6 +22,8 @@ public class DemoWebSocketHandler extends TextWebSocketHandler {
     @Override // 对应 open 事件
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         logger.info("[afterConnectionEstablished][session({}) 接入]", session);
+        Map<String, Object> attributes = session.getAttributes();
+        System.out.println(attributes);
     }
 
     @Override // 对应 message 事件
