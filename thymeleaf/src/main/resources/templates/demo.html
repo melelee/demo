@@ -4,5 +4,19 @@
     <meta charset="UTF-8">
     <meta name="keywords">
     <title th:text="${title}"> 默认title</title>
+    <div>[[${title}]]</div>
+    <div th:text="sdf+${title}">dddddddddd</div>
+
+
+    <div th:replace="component1::test"></div>
+
+    <div th:replace="~{component::test2}"></div>
+
+    <div th:insert="~{component::com4(~{::#message})}">
+        <p id="message">替换的message111111111</p>
+    </div>
+
+    <div th:replace="~{component::com4(~{})}"></div>
+
 </header>
 </html>
