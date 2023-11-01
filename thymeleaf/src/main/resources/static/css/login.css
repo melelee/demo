@@ -1,13 +1,16 @@
 .login-div {
-    background-color: brown;
-    width: 122px;
-    height: 111px;
     float: left;
-    margin: auto;
+
+    background-color: brown;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
 }
 
 html {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    background-color: darkolivegreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
