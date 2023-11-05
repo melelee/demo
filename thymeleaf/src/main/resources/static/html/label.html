@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="https://search.jd.com/search" target="_blank">
+    <fieldset>
+        <legend>
+            登陆信息
+        </legend>
+
+        <label for="username">账号：</label><input type="text" name="username" placeholder="账号" id="username">
+        <br>
+        <label for="password">密码：</label><input type="password" name="password" id="password" placeholder="密码">
+        <br>
+    </fieldset>
+
+    <fieldset>
+        <legend>附属信息</legend>
+        <label>
+            性别
+            <label>
+                <input type="radio" name="gender" id="male" value="male" checked> 男
+
+            </label>
+            <label>
+                <input type="radio" name="gender" id="female" value="female">女
+
+            </label>
+        </label>
+        <br>
+        <input type="checkbox" name="hobby" id="chouyan" value="chouyan" checked>抽烟
+        <input type="checkbox" name="hobby" id="hejiu" value="hejiu">喝酒
+        <input type="checkbox" name="hobby" id="tangtou" value="tangtou">烫头
+        <br>
+        <input type="hidden" name="from" value="baidu">
+        <br>
+
+        <textarea name="other" id="" cols="10" rows="3">默认内容</textarea>
+        <br>
+
+        <select name="area">
+            <option value="hefei">合肥</option>
+            <option value="sushou">宿州</option>
+            <option value="maanshan">马鞍山</option>
+            <option value="chaohu">合肥巢湖</option>
+            <option value="wuhu" selected>芜湖</option>
+        </select>
+
+    </fieldset>
+
+    <br>
+    <button>京东搜索</button>
+    <button type="submit">京东搜索</button>
+    <input type="submit" value="京东搜索">
+
+    <input type="reset" value="重置表单">
+    <button type="reset">重置吧</button>
+
+    <button type="button"> 普通按钮</button>
+    <input type="button" value="普通按钮">
+</form>
+</body>
+</html>

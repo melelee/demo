@@ -5,46 +5,38 @@
     <title>Title</title>
 </head>
 <body>
-<p>
-
-</p>
-
-<form action="https://www.baidu.com/s">
-    <label>
-        <input type="text" name="wd" placeholder="关键词">
-    </label>
-    <button>百度搜索</button>
-</form>
-
-<a href="https://www.baidu.com/s?wd=sdf">超链接版搜素</a>
 
 <form action="https://search.jd.com/search" target="_blank">
-    <input type="text" name="keyword">
-    <button>京东搜索</button>
-</form>
-
-<form action="https://search.jd.com/search" target="_blank">
-    <input type="text" name="username" placeholder="账号" id="username">
+    <input type="text" name="username" placeholder="账号" id="username" disabled>
     <br>
-    <input type="password" name="password" id="password">
+    <input type="password" name="password" id="password" disabled>
     <br>
     <input type="radio" name="gender" id="male" value="male" checked> 男
-    <input type="radio" name="gender" id="female" value="female">女
+    <input type="radio" name="gender" id="female" value="female" disabled>女
     <br>
     <input type="checkbox" name="hobby" id="chouyan" value="chouyan" checked>抽烟
-    <input type="checkbox" name="hobby" id="hejiu" value="hejiu">喝酒
+    <input type="checkbox" name="hobby" id="hejiu" value="hejiu" disabled>喝酒
     <input type="checkbox" name="hobby" id="tangtou" value="tangtou">烫头
     <br>
-    <input type="hidden" name="from" value="baidu">
+    <input type="hidden" name="from" value="baidu" disabled>
     <br>
 
-    <textarea name="other" id="" cols="10" rows="3">默认内容</textarea>
+    <textarea name="other" id="" cols="10" rows="3" disabled>默认内容</textarea>
+    <br>
+
+    <select name="area" disabled>
+        <option value="hefei">合肥</option>
+        <option value="sushou">宿州</option>
+        <option value="maanshan">马鞍山 disabled</option>
+        <option value="chaohu">合肥巢湖</option>
+        <option value="wuhu" selected>芜湖</option>
+    </select>
     <br>
 
     <select name="area">
         <option value="hefei">合肥</option>
         <option value="sushou">宿州</option>
-        <option value="maanshan">马鞍山</option>
+        <option value="maanshan" disabled>马鞍山</option>
         <option value="chaohu">合肥巢湖</option>
         <option value="wuhu" selected>芜湖</option>
     </select>
