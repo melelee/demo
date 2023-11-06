@@ -1,16 +1,77 @@
 .login-div {
-    float: left;
-
     background-color: brown;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 500px;
 }
 
-html {
+/*类选择器*/
+.big {
+    font-size: 100px;
+}
+
+/*类选择器*/
+.red {
+    color: red;
+}
+
+/*id选择器*/
+#test {
+    color: brown;
+}
+
+/*交集选择器*/
+span#join {
+    color: blue;
+}
+
+/*交集选择器*/
+.join#join {
+    font-size: 100px;
+}
+
+/*交集选择器*/
+span.join#join {
+    background-color: aquamarine;
+}
+
+/*并集选择器*/
+.or,
+.or1,
+#select-id,
+p {
+    background-color: darkgreen;
+}
+
+
+/*后代选择器*/
+ul li {
+    background-color: lime;
+}
+
+ol li a {
     background-color: darkolivegreen;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+}
+
+/*子代选择器*/
+div > a {
+    background-color: crimson;
+}
+
+/*兄弟选择器*/
+hr + a {
+    background-color: dodgerblue;
+}
+
+/*兄弟选择器*/
+
+link ~ a {
+    background-color: burlywood;
+}
+
+/*属性选择器*/
+[title="s"] {
+    background-color: darkviolet;
+}
+
+/*伪类选择器*/
+a:visited {
+
 }
