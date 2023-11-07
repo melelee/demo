@@ -71,7 +71,126 @@ link ~ a {
     background-color: darkviolet;
 }
 
+
 /*伪类选择器*/
+a:link {
+    color: rgba(255, 220, 220, 0.88);
+}
+
 a:visited {
+    color: #14addc;
+
+}
+
+a:hover {
+    color: chartreuse;
+
+}
+
+a:active {
+    color: cornflowerblue;
+
+}
+
+input:focus {
+    background-color: blanchedalmond;
+}
+
+/*div下的所有a子元素的第一个*/
+div > a:first-child {
+
+}
+
+/*div下的所有子元素的第一个并且时a的元素*/
+div > a:first-child {
+
+}
+
+/*任意父元素下第一个，且是a的元素*/
+a:first-child {
+
+}
+
+a:last-child {
+
+}
+
+/*任意父元素下第2个，且是a的元素*/
+a:nth-child(2) {
+
+}
+
+/*任意父元素下所有a元素*/
+a:nth-child(n) {
+
+}
+
+/*任意父元素下偶数元素*/
+a:nth-child(2n) {
+}
+
+a:nth-child(2n+1) {
+}
+
+/*a标签的第一个*/
+a:first-of-type {
+
+}
+
+a:nth-last-of-type(1n+2) {
+
+}
+
+a:only-child {
+
+}
+
+a:only-of-type {
+
+}
+
+div:empty {
+
+}
+
+/*否定选择器，*/
+div > a:not(.join) {
+
+}
+
+/*否定选择器，*/
+div > a:not([title^="你好"]) {
+
+}
+
+
+div > a:not(:first-of-type) {
+
+}
+
+div > a:not(:first-child) {
+
+}
+
+input:checked {
+
+}
+
+input:focus {
+
+}
+
+/*结合锚点 #id*/
+/*目标伪类*/
+div:target {
+
+}
+
+/*语言伪类*/
+div:lang(en) {
+
+}
+
+:lang(en) {
 
 }
