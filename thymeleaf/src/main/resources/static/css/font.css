@@ -1,0 +1,37 @@
+body {
+    font-size: 20px;
+    font-family: "Microsoft YaHei UI", sans-serif;
+    text-indent: 200px;
+
+}
+
+.aaa {
+    font-size: 50px;
+    font-style: italic;
+    font-weight: bold;
+    word-spacing: 40px;
+    text-decoration: overline underline line-through;
+}
+
+.bbb {
+    font: bolder italic 100px 微软雅黑;
+    letter-spacing: 30px;
+}
+
+/*去除超链的下划线*/
+.ccc {
+    text-decoration: none;
+}
+
+.ddd {
+    font-size: 100px;
+    color: blue;
+    text-align: center;
+    line-height: 200px;
+    background-color: crimson;
+}
+
+.eee {
+    font-size: 100px;
+    line-height: 1.5;
+}
