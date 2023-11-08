@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            /*非表格特有属性*/
+            border: 1px red solid;
+            width: 500px;
+
+            /*表格特有属性*/
+            /*列宽*/
+            table-layout: fixed;
+
+            /*合并相邻单元格的border,优先级比border-spacing高*/
+            border-collapse: collapse;
+
+            /*单元格间隔*/
+            border-spacing: 10px;
+
+            /*隐藏没有内容的单元格，前提是没有合并单元格的边框*/
+            empty-cells: hide;
+
+            /*表格标题放到下面*/
+            caption-side: bottom;
+
+        }
+
+        th, td {
+            border: 1px green solid;
+        }
+    </style>
+</head>
+<body>
+<table>
+    <caption>标题</caption>
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>
+            政治面貌
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>张三</td>
+        <td>男</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>张三</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>张三</td>
+        <td>男</td>
+        <td>1</td>
+    </tr>
+    </tbody>
+
+</table>
+</body>
+</html>
