@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .outer {
+            width: 200px;
+            background-color: green;
+
+            position: relative;
+        }
+
+        .inner {
+            width: 100px;
+            height: 100px;
+        }
+
+        .first {
+            background-color: indigo;
+        }
+
+
+        /*行内元素开启绝对定位后，转为定位元素，可以设置宽和高*/
+        .second {
+            background-color: blue;
+
+            position: absolute;
+            /*left: px;*/
+            top: 100px;
+        }
+
+        .third {
+            background-color: crimson;
+        }
+
+        .outer:hover .second {
+            left: 100px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="outer">
+    <div class="inner first"></div>
+    <span class="inner second"></span>
+    <div class="inner third"></div>
+</div>
+
+</body>
+</html>
