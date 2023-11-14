@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .first, .second, .resize, .shadow, .opacity {
+            width: 100px;
+            height: 100px;
+            background-color: indigo;
+            padding: 10px;
+            border: 10px solid black;
+            margin: 10px;
+            font-size: 20px;
+        }
+
+        .first {
+            box-sizing: content-box;
+        }
+
+        .second {
+            box-sizing: border-box;
+        }
+
+        .resize {
+            resize: both;
+            overflow: auto;
+        }
+
+        .shadow {
+            box-shadow: 10px 10px 10px 10px green;
+        }
+
+        .opacity {
+            opacity: 0.4;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="first">
+</div>
+
+<div class="second"></div>
+
+<div class="resize"></div>
+
+
+<div class="shadow"></div>
+
+<div class="opacity"></div>
+</body>
+</html>
