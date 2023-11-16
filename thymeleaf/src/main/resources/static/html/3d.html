@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .outer {
+            width: 500px;
+            height: 500px;
+            margin: 100px auto 0;
+
+            border: 1px black dashed;
+
+            /*开启3d空间和景深*/
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .inner {
+            width: 500px;
+            height: 500px;
+
+            background-color: green;
+
+            transform: rotateX(30deg);
+
+        }
+
+
+        span {
+            display: block;
+            transform: translate(100px) rotateX(30deg);
+        }
+    </style>
+</head>
+<body>
+
+<div class="outer">
+    <div class="inner">
+        sssssssssssssssssssssssssssss
+    </div>
+
+    <span>sfsssssssssssssssssssss</span>
+</div>
+
+</body>
+</html>
