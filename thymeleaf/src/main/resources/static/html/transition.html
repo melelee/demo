@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .block {
+            width: 400px;
+            height: 400px;
+            background-color: yellow;
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            transition-delay: 1s;
+            transition-property: all;
+            transition-duration: 5s;
+            transition-timing-function: cubic-bezier(.55, 1.83, .91, -1.42);
+        }
+
+        .block:hover {
+            width: 500px;
+            height: 500px;
+            background-color: green;
+            transform: rotate(45deg);
+
+            box-shadow: 0 0 10px black;
+            opacity: 0.5;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<div class="block"></div>
+</body>
+</html>
