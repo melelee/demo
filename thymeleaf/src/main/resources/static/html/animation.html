@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .outer {
+            width: 1000px;
+            height: 100px;
+            border: 1px solid black;
+
+            position: relative;
+        }
+
+
+        @keyframes slide {
+            0% {
+            }
+
+            40% {
+                transform: translate(300px) rotate(40deg);
+                background-color: blue;
+            }
+
+            100% {
+                transform: translate(900px);
+                background-color: red;
+            }
+        }
+
+        .inner {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+
+
+            animation-name: slide;
+            animation-duration: 5s;
+            animation-iteration-count: 10;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="outer">
+    <div class="inner"></div>
+</div>
+</body>
+</html>
