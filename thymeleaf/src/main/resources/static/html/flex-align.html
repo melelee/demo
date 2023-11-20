@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .outer {
+            width: 1000px;
+            height: 600px;
+            background-color: #14addc;
+
+            display: flex;
+
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            /*主轴对齐方式*/
+            /*justify-content: space-between;*/
+
+            /*侧轴单行时的对齐方式*/
+            align-items: baseline;
+
+            /*侧轴多行时的对齐方式*/
+            align-content: baseline;
+
+            /*伸缩盒子的伸*/
+            /*flex-grow: 1;*/
+        }
+
+        .inner {
+            width: 200px;
+            height: 200px;
+            background: red;
+            border: 1px black solid;
+
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+<div class="outer">
+    <div class="inner">1</div>
+    <div class="inner">2</div>
+    <div class="inner">3</div>
+
+    <div class="inner">11</div>
+
+</div>
+</body>
+</html>
