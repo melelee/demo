@@ -1,0 +1,6 @@
+knife4j:
+  enable: true
+#  以下配置项存在bug
+#  https://doc.xiaominfo.com/docs/blog/production-forbidden-ui
+#  https://gitee.com/xiaoym/knife4j/issues/I4XDYE
+  production: true
