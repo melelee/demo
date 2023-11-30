@@ -1,30 +1,42 @@
 package com.melelee.swagger.jackson;
 
+import cn.hutool.db.PageResult;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.jsontype.TypeResolverBuilder;
+import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Demo {
-    public static void main(String[] args) throws JsonProcessingException {
+    public static void main(String[] args) throws IOException {
 
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
 
+        TypeResolverBuilder<?> typeResolver = new CustomTypeResolverBuilder();
+        typeResolver.init(JsonTypeInfo.Id.NAME, null);
+        typeResolver.inclusion(JsonTypeInfo.As.PROPERTY);
+        objectMapper.setDefaultTyping(typeResolver);
+
+
+//        objectMapper.activateDefaultTyping(LaissezFaireSubTypeValidator.instance, ObjectMapper.DefaultTyping.NON_FINAL, JsonTypeInfo.As.PROPERTY);
+
+
+
+
         Tiger tiger = new Tiger();
         tiger.setName("tiger");
         tiger.setWeight(100L);
-        String tigerJson = objectMapper.writeValueAsString(tiger);
-        System.out.println(tigerJson);
+        Result<Tiger> success = new Result<>(false, "success", 0, tiger);
 
-        extracted(objectMapper, tigerJson);
-
-        Animal animal = new Animal();
-        animal.setName("animal");
-        String animalJson = objectMapper.writeValueAsString(animal);
-        System.out.println(animalJson);
-
-        extracted(objectMapper, animalJson);
+        objectMapper.writeValue(System.out, success);
 
     }
 
@@ -41,6 +53,7 @@ public class Demo {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
+
+
 }
