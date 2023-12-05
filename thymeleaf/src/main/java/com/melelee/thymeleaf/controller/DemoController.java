@@ -12,4 +12,9 @@ public class DemoController {
         model.addAttribute("title", "后台返回的标题");
         return "demo";
     }
+
+    @GetMapping(value = "/path")
+    public String path(Model model) {
+        return "path";
+    }
 }
