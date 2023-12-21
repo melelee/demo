@@ -1,0 +1,17 @@
+version: '3'
+services:
+  sser:
+    image: centos:7.9.2009
+    container_name: ms1
+    ports:
+      - 123:123
+    volumes:
+      - sdf
+    networks:
+      - sdf
+    depends_on:
+      - sdf
+  redis;
+
+networks:
+  123
