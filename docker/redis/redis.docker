@@ -1,6 +1,16 @@
 docker run -p 6379:6379 --name redis --restart always \
 -v /root/docker/redis/redis.conf:/etc/redis/redis.conf \
 -v /root/docker/redis/data:/data \
--v /root/docker/redis/log:/var/log/redis
+-v /root/docker/redis/log:/var/log/redis \
 -d redis:7.2.3 \
 redis-server /etc/redis/redis.conf --appendonly yes --requirepass 123123
+
+
+
+docker run \
+-p 6379:6379 \
+--name redis \
+-v /root/docker/redis/redis.conf:/etc/redis/redis.conf \
+-v /root/docker/redis/data:/data \
+-d redis:7.2.3 \
+redis-server /etc/redis/redis.conf
