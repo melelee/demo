@@ -3,3 +3,10 @@ sh  run_admin.sh -e server.port=8089 \
          -e spring.datasource.database=canal_manager \
          -e spring.datasource.username=canal \
          -e spring.datasource.password=canal
+
+
+
+https://github.com/alibaba/canal/wiki/Canal-Admin-Guide
+https://github.com/alibaba/canal/wiki/Canal-Admin-Docker
+https://github.com/alibaba/canal/wiki/Canal-Admin-QuickStart
+https://github.com/alibaba/canal/wiki/Canal-Admin-ServerGuide
