@@ -1,0 +1,5 @@
+sh  run_admin.sh -e server.port=8089 \
+         -e spring.datasource.address=172.16.1.158:3306 \
+         -e spring.datasource.database=canal_manager \
+         -e spring.datasource.username=canal \
+         -e spring.datasource.password=canal
