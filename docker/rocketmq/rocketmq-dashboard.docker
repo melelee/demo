@@ -1,0 +1,1 @@
+docker run -d --name rocketmq-dashboard -e "JAVA_OPTS=-Drocketmq.namesrv.addr=172.16.1.158:9876" -p 8080:8080 -t apacherocketmq/rocketmq-dashboard:latest
