@@ -1,16 +1,16 @@
 docker run -p 6379:6379 --name redis --restart always \
--v /root/docker/redis/redis.conf:/etc/redis/redis.conf \
--v /root/docker/redis/data:/data \
--v /root/docker/redis/log:/var/log/redis \
+-v /home/redis/redis.conf:/etc/redis/redis.conf \
+-v /home/redis/data:/data \
+-v /home/redis/log:/var/log/redis \
 -d redis:7.2.3 \
-redis-server /etc/redis/redis.conf --appendonly yes --requirepass 123123
+redis-server /etc/redis/redis.conf
 
 
+https://download.redis.io/releases/
 
-docker run \
--p 6379:6379 \
---name redis \
--v /root/docker/redis/redis.conf:/etc/redis/redis.conf \
--v /root/docker/redis/data:/data \
+
+docker run -p 6379:6379 --name redis --restart always \
+-v /home/redis/redis.conf:/etc/redis/redis.conf \
+-v /home/redis/data:/data \
 -d redis:7.2.3 \
 redis-server /etc/redis/redis.conf
