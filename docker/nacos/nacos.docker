@@ -1,0 +1,20 @@
+docker run -d -p 8848:8848  \
+-e MODE=standalone \
+-e PREFER_HOST_MODE=hostname \
+-e SPRING_DATASOURCE_PLATFORM=mysql \
+-v /home/nacos/conf/application.properties:/home/nacos/conf/application.properties
+-v /home/nacos/logs:/home/nacos/logs \
+--restart always --name nacos nacos/nacos-server:v2.3.0
+
+
+
+docker  run \
+--name nacos -d \
+-p 8848:8848 \
+--restart=always \
+-e JVM_XMS=512m \
+-e JVM_XMX=512m \
+-e MODE=standalone \
+-v /home/nacos/logs:/home/nacos/logs \
+-v /home/nacos/application.properties:/home/nacos/conf/application.properties \
+nacos/nacos-server:v2.0.3

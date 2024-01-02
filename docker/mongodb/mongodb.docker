@@ -1,0 +1,6 @@
+docker run -itd --name mongodb -v /home/mongodb/data:/data/db -p 27017:27017 mongo:4.4 --auth
+
+
+docker exec -it mongodb mongo admin
+
+db.createUser({ user:'root',pwd:'root',roles:[ { role:'userAdminAnyDatabase', db: 'admin'},'readWriteAnyDatabase']});
