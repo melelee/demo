@@ -15,9 +15,9 @@ import java.util.List;
 public class AddPageNumbersToExistingDocument {
     public static void main(String[] args) throws IOException {
 //        simple();
-//        test();
+        test();
 
-        baidu();
+//        baidu();
     }
 
     private static void simple() throws IOException {
@@ -45,6 +45,7 @@ public class AddPageNumbersToExistingDocument {
 //            <artifactId>poi-ooxml</artifactId>
 //            <version>5.2.5</version>
 //        </dependency>
+
 
 
 
