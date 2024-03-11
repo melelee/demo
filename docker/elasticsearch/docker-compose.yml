@@ -1,42 +1,46 @@
+
+
+
+#  To permanently change the value for the vm.max_map_count setting, update the value in /etc/sysctl.conf.
+
+#  永久禁用swap（重启后不启用）：
+#  编辑 /etc/fstab 文件，注释掉所有涉及swap文件或分区的行。
+
+
+#  使用daemon.json配置文件：
+#  首先，确保/etc/docker/daemon.json文件存在。如果不存在，则创建它。
+#  编辑该文件并添加或修改如下内容以设置新的数据根目录（data-root）：
+#  Json
+#  {
+#    "data-root": "/path/to/new/docker/storage"
+#  }
+
+
 version: '2.2'
 services:
   elasticsearch1:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.8.23
-    container_name: elasticsearch1
+    container_name: elasticsearch
     environment:
+      - "bootstrap.memory_lock=true"
+      - "ES_JAVA_OPTS=-Xms4g -Xmx4g"
       - cluster.name=docker-cluster
-      - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ulimits:
       memlock:
         soft: -1
         hard: -1
+      nofile:
+        soft: 65535
+        hard: 65535
+      nproc:
+        soft: 65535
+        hard: 65535
     volumes:
-      - /home/elasticsearch/node1/data:/usr/share/elasticsearch/data
+      - es_data:/usr/share/elasticsearch/data
       - /home/elasticsearch/node1/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - /home/elasticsearch/node1/plugins:/usr/share/elasticsearch/plugins
     ports:
-      - 9200:9200
-    networks:
-      - esnet
-#  elasticsearch2:
-#    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.23
-#    container_name: elasticsearch2
-#    environment:
-#      - cluster.name=docker-cluster
-#      - bootstrap.memory_lock=true
-#      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-#      - "discovery.zen.ping.unicast.hosts=elasticsearch"
-#    ulimits:
-#      memlock:
-#        soft: -1
-#        hard: -1
-#    volumes:
-#      - /home/elasticsearch/node2/data:/usr/share/elasticsearch/data
-#      - /home/elasticsearch/node2/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-#      - /home/elasticsearch/node2/plugins:/usr/share/elasticsearch/plugins
-#    networks:
-#      - esnet
-
-networks:
-  esnet:
+      - "9200:9200"
+      - "9300:9300"
+volumes:
+  es_data:
