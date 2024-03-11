@@ -1,0 +1,11 @@
+https://kubernetes.io/zh-cn/docs/setup/production-environment/tools/
+
+
+https://developer.aliyun.com/mirror/kubernetes
+
+
+yum install -y kubelet-1.23.17-0 kubeadm-1.23.17-0 kubectl-1.23.17-0
+
+
+
+jour

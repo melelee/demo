@@ -1,1 +1,5 @@
 https://docs.docker.com/engine/install/centos/
+
+https://help.aliyun.com/zh/ecs/use-cases/deploy-and-use-docker-on-alibaba-cloud-linux-2-instances
+    wget -O /etc/yum.repos.d/docker-ce.repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+    yum -y install docker-ce-20.10.24-3.el7
