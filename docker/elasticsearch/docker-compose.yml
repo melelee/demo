@@ -18,13 +18,12 @@
 
 version: '2.2'
 services:
-  elasticsearch1:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.23
+  elasticsearch:
+    image: elasticsearch:6.8.23
     container_name: elasticsearch
     environment:
       - "bootstrap.memory_lock=true"
       - "ES_JAVA_OPTS=-Xms4g -Xmx4g"
-      - cluster.name=docker-cluster
     ulimits:
       memlock:
         soft: -1
@@ -36,11 +35,8 @@ services:
         soft: 65535
         hard: 65535
     volumes:
-      - es_data:/usr/share/elasticsearch/data
-      - /home/elasticsearch/node1/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
-      - /home/elasticsearch/node1/plugins:/usr/share/elasticsearch/plugins
-    ports:
-      - "9200:9200"
-      - "9300:9300"
-volumes:
-  es_data:
+      - /home/elasticsearch/data:/usr/share/elasticsearch/data
+      - /home/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - /home/elasticsearch/plugins:/usr/share/elasticsearch/plugins
+    network_mode: host
+    restart: always

@@ -1,3 +1,37 @@
 https://www.elastic.co/guide/en/elasticsearch/reference/6.8/docker.html
 
+chmod -R g+rwx elasticsearch
+chgrp -R 0 elasticsearch
+
+
+docker run \
+  --name elasticsearch \
+  -e "bootstrap.memory_lock=true" \
+  -e "ES_JAVA_OPTS=-Xms4g -Xmx4g" \
+  --ulimit memlock=-1:-1 \
+  --ulimit nofile=65535:65535 \
+  --ulimit nproc=65535:65535 \
+  -v /home/elasticsearch/data:/usr/share/elasticsearch/data \
+  -v /home/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml \
+  -v /home/elasticsearch/plugins:/usr/share/elasticsearch/plugins \
+  --network host \
+  --restart always \
+  -d elasticsearch:6.8.23
+
+
+
+
+
 https://github.com/medcl/elasticsearch-analysis-ik/releases
+
+
+
+docker run \
+  --name elasticsearch-test \
+  -e "ES_JAVA_OPTS=-Xms4g -Xmx4g" \
+  --ulimit nofile=65535:65535 \
+  --ulimit nproc=65535:65535 \
+  --network host \
+  elasticsearch:6.8.23
+
+
