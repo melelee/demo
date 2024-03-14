@@ -16,7 +16,7 @@ docker run \
   -v /home/elasticsearch/plugins:/usr/share/elasticsearch/plugins \
   --network host \
   --restart always \
-  -d elasticsearch:6.8.23
+  -d elasticsearch:7.17.18
 
 
 
@@ -28,10 +28,10 @@ https://github.com/medcl/elasticsearch-analysis-ik/releases
 
 docker run \
   --name elasticsearch-test \
-  -e "ES_JAVA_OPTS=-Xms4g -Xmx4g" \
+  -e "discovery.seed_hosts" \
+
   --ulimit nofile=65535:65535 \
   --ulimit nproc=65535:65535 \
-  --network host \
-  elasticsearch:6.8.23
+  elasticsearch:7.17.18
 
 
