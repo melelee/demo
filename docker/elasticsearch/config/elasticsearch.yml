@@ -1,0 +1,14 @@
+cluster.name: docker-es-cluster
+node.name: node-151
+bootstrap.memory_lock: true
+network.host: 0.0.0.0
+
+discovery.seed_hosts:
+   - 172.16.1.151:9300
+   - 172.16.1.153:9300
+   - 172.16.1.154:9300
+cluster.initial_master_nodes: 
+   - node-151
+   - node-153
+   - node-154
+xpack.security.enabled: true
