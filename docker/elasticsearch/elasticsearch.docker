@@ -7,12 +7,15 @@ chgrp -R 0 elasticsearch
 docker run \
   --name elasticsearch \
   -e "bootstrap.memory_lock=true" \
-  -e "ES_JAVA_OPTS=-Xms1g -Xmx1g" \
+  -e "ES_JAVA_OPTS=-Xms3g -Xmx3g" \
+  -e "KEYSTORE_PASSWORD=keystore_password" \
   --ulimit memlock=-1:-1 \
   --ulimit nofile=65535:65535 \
   --ulimit nproc=65535:65535 \
   -v /home/elasticsearch/data:/usr/share/elasticsearch/data \
   -v /home/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml \
+  -v /home/elasticsearch/config/elasticsearch.keystore:/usr/share/elasticsearch/config/elasticsearch.keystore \
+  -v /home/elasticsearch/config/elastic-certificates.p12:/usr/share/elasticsearch/config/elastic-certificates.p12 \
   -v /home/elasticsearch/plugins:/usr/share/elasticsearch/plugins \
   --network host \
   --restart always \
@@ -21,28 +24,28 @@ docker run \
 
 
 
-docker run \
-  --name elasticsearch \
-  -e "bootstrap.memory_lock=true" \
-  -e "ES_JAVA_OPTS=-Xms512m -Xmx512m" \
-  --ulimit memlock=-1:-1 \
-  --ulimit nofile=65535:65535 \
-  --ulimit nproc=65535:65535 \
-  -v /root/docker/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml \
-  --network host \
-  --restart always \
-  -d elasticsearch:7.17.18
-
-
-
 
 docker run -it --rm \
--v /root/docker/elasticsearch/config:/usr/share/elasticsearch/config \
+-v /home/elasticsearch/config:/usr/share/elasticsearch/config \
 elasticsearch:7.17.18 \
 bin/elasticsearch-keystore create -p
 
+docker run -it --rm \
+-v /home/elasticsearch/config:/usr/share/elasticsearch/config \
+elasticsearch:7.17.18 \
+bin/elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password
 
-  -v /root/docker/elasticsearch/config:/usr/share/elasticsearch/config/elasticsearch.yml \
+docker run -it --rm \
+-v /home/elasticsearch/config:/usr/share/elasticsearch/config \
+elasticsearch:7.17.18 \
+bin/elasticsearch-keystore add xpack.security.transport.ssl.truststore.secure_password
+
+
+docker run -it --rm \
+-v /home/elasticsearch/config:/usr/share/elasticsearch/config \
+elasticsearch:7.17.18 \
+bin/elasticsearch-setup-passwords auto
+
 
 
 
@@ -51,15 +54,4 @@ https://github.com/medcl/elasticsearch-analysis-ik/releases
 
 
 
-docker run \
-  --name elasticsearch-test \
-  -e "discovery.seed_hosts" \
-
-  --ulimit nofile=65535:65535 \
-  --ulimit nproc=65535:65535 \
-  elasticsearch:7.17.18
-
-
-
-
-docker exec -it <container_name> /usr/share/elasticsearch/bin/elasticsearch-keystore add xpack.security.transport.ssl.keystore.secure_password
+https://blog.csdn.net/weixin_44742630/article/details/120533544

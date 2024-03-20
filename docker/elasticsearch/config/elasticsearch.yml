@@ -4,11 +4,17 @@ bootstrap.memory_lock: true
 network.host: 0.0.0.0
 
 discovery.seed_hosts:
-   - 172.16.1.151:9300
-   - 172.16.1.153:9300
-   - 172.16.1.154:9300
+   - ip1:9300
+   - ip2:9300
+   - ip3:9300
 cluster.initial_master_nodes: 
-   - node-151
-   - node-153
-   - node-154
+   - node-1
+   - node-2
+   - node-3
 xpack.security.enabled: true
+xpack.security.transport.ssl.enabled: true
+xpack.security.transport.ssl.verification_mode: certificate
+xpack.security.transport.ssl.client_authentication: required
+xpack.security.transport.ssl.keystore.path: elastic-certificates.p12
+xpack.security.transport.ssl.truststore.path: elastic-certificates.p12
+ingest.geoip.downloader.enabled: false
